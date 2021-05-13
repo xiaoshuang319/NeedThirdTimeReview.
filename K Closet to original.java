@@ -17,7 +17,7 @@ class Solution {
         if(numberOfEle == k){
             return;
         }else if(numberOfEle < k){
-            QuickSort(input,k - numberOfEle, pivotIndex + 1, end);
+            QuickSort(input,k - numberOfEle, pivotIndex + 1, end); //less than k,再找剩余的k - numberOfEle
         }else{
              QuickSort(input,k, start, pivotIndex - 1);
         }
@@ -41,4 +41,35 @@ class Solution {
         return input[0] * input[0] + input[1] * input[1];
     }
     
+}
+
+//Kth Largest Element in an Array
+
+class Solution {
+    public int findKthLargest(int[] nums, int k) {
+      return partition(nums, 0, nums.length - 1, k);
+    }
+ 
+    private int partition(int[]nums, int start, int end, int k){
+        int left = start - 1, peekIndex = end;
+        for(int i = start; i < end; i++){
+            if(nums[i] < nums[peekIndex]){
+                left++;
+                int temp = nums[left];
+                nums[left] = nums[i];
+                nums[i] = temp;
+            }
+        }
+        int temp = nums[left + 1];
+        nums[left + 1] =  nums[peekIndex];
+        nums[peekIndex] = temp;
+        
+        int count = end - left;
+        if(count == k) return nums[left + 1];
+        if(count < k){//reduce pivot value
+           return partition(nums, start, left, k - count);//made mistaken
+        }else{ //increase pivot value
+           return partition(nums, left + 2, end, k);
+        }
+    }
 }
