@@ -23,3 +23,5 @@ class Solution {
         return Math.max(leftSum, rightSum) + node.val;
     }
 }
+
+//Diameter of Binary Tree
