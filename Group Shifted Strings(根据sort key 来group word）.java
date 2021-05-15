@@ -41,3 +41,35 @@ class Solution {
        
     }
 }
+class Solution {
+    public List<List<String>> groupAnagrams(String[] strs) {
+        List<List<String>>result = new ArrayList<>();
+        Map<String,List<String>>patternToGroup = new HashMap<>();
+        for(String ele : strs){
+            String pattern = getPattern(ele);
+            if(patternToGroup.containsKey(pattern)){
+                patternToGroup.get(pattern).add(ele);
+            }else{
+                List<String>temp = new ArrayList<>();
+                temp.add(ele);
+                patternToGroup.put(pattern,temp);
+            }
+        }
+       for(List<String>ele : patternToGroup.values()){
+           result.add(ele);
+       }
+       return result;
+    }
+    private String getPattern(String input){
+        char[]count = new char[26];
+        StringBuilder pattern = new StringBuilder();
+        for(char c : input.toCharArray()){
+            count[c - 'a']++;
+        }
+        for(char c : count){
+            pattern.append(c);
+            pattern.append("#");
+        }
+        return pattern.toString();
+    }
+}
