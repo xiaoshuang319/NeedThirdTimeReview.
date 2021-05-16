@@ -43,3 +43,32 @@ public class Codec {
 // Codec ser = new Codec();
 // Codec deser = new Codec();
 // TreeNode ans = deser.deserialize(ser.serialize(root));
+
+
+
+   public void serializeHelper(TreeNode root) {
+        if(root == null){
+            result.add(-1);
+            return
+        }
+        result.add(-2);
+        result.add(root.val);
+        serialize(root.left);
+        serialize(root.right);
+    }
+    
+    public TreeNode deserializeHelper(Queue<Integer>queue) {
+        int curr = queue.poll();
+        if(curr == -1){
+            return null;
+        }
+        TreeNode root == null;
+        if(curr == -2){
+            int val = queue.poll();
+            root = new TreeNode(val);
+        }
+        root.left = deserializeHelper(queue);
+        root.right = deserializeHelper(queue);
+        return root;
+        
+    }
