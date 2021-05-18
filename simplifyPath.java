@@ -4,7 +4,7 @@ class Solution {
      //case2: current element = "..", pop
      //case3: current element = char. add
         Stack<String>stack = new Stack<>();
-        String[] input = path.split("/");
+        String[] input = path.split("/"); //split string before it. if no string before it, it will return empty string
        
         for(String ele : input){
             if(ele.equals("..")){
