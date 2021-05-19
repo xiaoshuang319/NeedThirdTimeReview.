@@ -30,7 +30,7 @@ class Solution {
         return dummyNode.next;
     }
 }
-
+//time complixty :nlgn => merge sort: lng divide conquer, n operatior for each divide conquer
 class Solution {
     public ListNode mergeKLists(ListNode[] lists) {
         if(lists == null || lists.length == 0)return null;
