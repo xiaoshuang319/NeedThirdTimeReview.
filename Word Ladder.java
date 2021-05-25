@@ -11,7 +11,7 @@ class Solution {
             int size = queue.size();
             for(int i = 0; i < size; i++){
                 String curr = queue.poll();
-                char[]temp = curr.toCharArray();
+                char[]temp = curr.toCharArray();//巧妙用一个char array
                 for(int j = 0; j < temp.length; j++){
                     char a = temp[j];
                     for(char ele : options){
@@ -25,7 +25,7 @@ class Solution {
                             visit.add(nextEle);
                         }
                     }
-                     temp[j] = a;
+                     temp[j] = a;//记得还原
                 }
             }
            level++;
