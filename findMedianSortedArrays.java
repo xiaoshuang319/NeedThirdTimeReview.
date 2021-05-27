@@ -17,7 +17,7 @@ class Solution {
         while(start <= end){
             apart = (start + end) / 2;//这是表示1）从第几个数字开始cut 2）前面有几个数字
             bpart = half - apart;
-            
+            //因为apart表示的是第几位，所以得保证前面有数字。。。。。
             if(apart > start && nums1[apart - 1] >nums2[bpart]){
                 end = apart - 1;
             }else if(apart < end && nums1[apart] < nums2[bpart - 1]){
