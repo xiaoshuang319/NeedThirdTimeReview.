@@ -1,2 +1,48 @@
 1. Find Minimum in Rotated Sorted Array比较mid 和end的关系
 2. Find Peek Element比较mid 和mid + 1 的关系
+
+
+该类题都是内部是sort的，/
+                       /
+          
+Find Minimum in Rotated Sorted Array //num[mid] nums[end]
+class Solution {
+    public int findMin(int[] nums) {
+       int len = nums.length;
+        int start = 0, end = len - 1;
+        while(start < end){
+            int mid = start + (end - start) / 2;
+            if(nums[mid] == nums[end]){
+                end--;
+            }else if(nums[mid] > nums[end]){
+                start = mid + 1;
+                //System.out.println("hell0");
+            }else{
+                end = mid;
+            }
+        }
+        return nums[start];
+    }
+}
+
+
+
+Find Minimum in Rotated Sorted Array II //如果mid 和end相等的话，一直移动end值到不想等
+class Solution {
+    public int findMin(int[] nums) {
+       int len = nums.length;
+        int start = 0, end = len - 1;
+        while(start < end){
+            int mid = start + (end - start) / 2;
+            if(nums[mid] == nums[end]){
+                end--;
+            }else if(nums[mid] > nums[end]){
+                start = mid + 1;
+                //System.out.println("hell0");
+            }else{
+                end = mid;
+            }
+        }
+        return nums[start];
+    }
+}
